@@ -1,6 +1,7 @@
 # Environment variables and local secrets
 .agents
 .codex
+.env
 .env.*
 !.env.example
 
