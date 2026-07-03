@@ -1,0 +1,106 @@
+# Go Fiber Postgres API
+
+A small REST API built with Go, Fiber, GORM, and PostgreSQL. It exposes CRUD routes for a `books` table.
+
+## Tech Stack
+
+- Go
+- Fiber
+- GORM
+- PostgreSQL
+- godotenv
+
+## Setup
+
+1. Install dependencies:
+
+```bash
+go mod tidy
+```
+
+2. Create a PostgreSQL database. The default local database name used by this project is:
+
+```text
+golang_project
+```
+
+3. Create a `.env` file in the project root:
+
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=golang_project
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_SSL_MODE=disable
+```
+
+4. Run the server:
+
+```bash
+go run main.go
+```
+
+The server starts on:
+
+```text
+http://localhost:3000
+```
+
+## API Routes
+
+### Create a Book
+
+```http
+POST /api/create_book
+```
+
+Example body:
+
+```json
+{
+  "author": "Ezekiel",
+  "title": "things fall apart",
+  "publisher": "dwinsah"
+}
+```
+
+### Get All Books
+
+```http
+GET /api/books
+```
+
+### Get One Book
+
+```http
+GET /api/books/:id
+```
+
+### Update a Book
+
+```http
+PUT /api/books/:id
+```
+
+Example body:
+
+```json
+{
+  "author": "Ezekiel",
+  "title": "Things Fall Apart",
+  "publisher": "dwinsah"
+}
+```
+
+### Delete a Book
+
+```http
+DELETE /api/books/:id
+```
+
+## Notes
+
+- The app loads database settings from `.env`.
+- GORM auto-migrates the `books` table when the server starts.
+- Send JSON requests with the `Content-Type: application/json` header.
